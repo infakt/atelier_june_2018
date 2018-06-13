@@ -17,39 +17,20 @@ class Book < ApplicationRecord
     not_taken? && ( available_for_user?(user) || reservations.empty? )
   end
 
-  def take(user)
-    return unless can_take?(user)
-
-    if available_reservation.present?
-      available_reservation.update_attributes(status: 'TAKEN')
-    else
-      reservations.create(user: user, status: 'TAKEN')
-    end
-  end
-
   def can_give_back?(user)
     reservations.find_by(user: user, status: 'TAKEN').present?
-  end
-
-  def give_back
-    ActiveRecord::Base.transaction do
-      reservations.find_by(status: 'TAKEN').update_attributes(status: 'RETURNED')
-      next_in_queue.update_attributes(status: 'AVAILABLE') if next_in_queue.present?
-    end
   end
 
   def can_reserve?(user)
     reservations.find_by(user: user, status: 'RESERVED').nil?
   end
 
-  def reserve(user)
-    return unless can_reserve?(user)
-
-    reservations.create(user: user, status: 'RESERVED')
+  def available_reservation
+    reservations.find_by(status: 'AVAILABLE')
   end
 
-  def cancel_reservation(user)
-    reservations.where(user: user, status: 'RESERVED').order(created_at: :asc).first.update_attributes(status: 'CANCELED')
+  def next_in_queue
+    reservations.where(status: 'RESERVED').order(created_at: :asc).first
   end
 
   private
@@ -68,13 +49,5 @@ class Book < ApplicationRecord
 
   def pending_reservations
     reservations.find_by(status: 'PENDING')
-  end
-
-  def available_reservation
-    reservations.find_by(status: 'AVAILABLE')
-  end
-
-  def next_in_queue
-    reservations.where(status: 'RESERVED').order(created_at: :asc).first
   end
 end
