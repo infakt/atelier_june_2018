@@ -76,9 +76,41 @@ describe 'AppRouting' do
 
 
   it{
-    expect(post: 'books/new').to route_to(
+    expect(post: 'books').to route_to(
       controller: 'books',
-      action: 'new'
+      action: 'create'
+    )
+  }
+
+  it{
+    expect(get: 'books/8').to route_to(
+      controller: 'books',
+      action: 'show',
+      id: '8'
+    )
+  }
+
+  it{
+    expect(put: 'books/8').to route_to(
+      controller: 'books',
+      action: 'update',
+      id: '8'
+    )
+  }
+
+  it{
+    expect(patch: 'books/8').to route_to(
+      controller: 'books',
+      action: 'update',
+      id: '8'
+    )
+  }
+
+  it{
+    expect(delete: 'books/8').to route_to(
+      controller: 'books',
+      action: 'destroy',
+      id: '8'
     )
   }
 end
