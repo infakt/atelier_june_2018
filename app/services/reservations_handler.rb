@@ -21,7 +21,7 @@ class ReservationsHandler
     else
       book.reservations.create(user: user, status: 'TAKEN')
     end
-    
+    ReservationMailer.reservation_confirmation(user, book).deliver_now
   end
 
   def give_back

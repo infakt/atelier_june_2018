@@ -7,8 +7,7 @@ class ReservationsController < ApplicationController
   end
 
   def take
-    reservation_handler.take
-    ReservationMailer.reservation_confirmation(current_user, book).deliver_now
+    reservation_handler.take    
     redirect_to(book_path(book.id))
   end
 

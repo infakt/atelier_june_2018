@@ -1,3 +1,7 @@
-<%= @user.email %>
-<p> You have made reservation</p>
-<p> Expiration date: <%= @reservation.expires_at %></p>
+Dear <%= @user.email %> !
+You have successfully borrowed a book!
+Book and reservation details:
+Title: <%= @book.title %>
+ISBN: <%= @book.isbn %>
+Expiration date: <%= @reservation.expires_at %>
+<%= link_to @book.title, book_url(@book.id) %>
