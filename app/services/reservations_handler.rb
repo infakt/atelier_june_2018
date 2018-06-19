@@ -13,7 +13,7 @@ class ReservationsHandler
     book.reservations.where(user: user, status: 'RESERVED').order(created_at: :asc).first.update_attributes(status: 'CANCELED')
   end
 
-  def take(book)
+  def take
     return "Book cannot be taken" unless book.can_take?(user)
 
     if book.available_reservation.present?
@@ -23,17 +23,14 @@ class ReservationsHandler
     end
   end
 
-  def give_back(book)
+  def give_back
     ActiveRecord::Base.transaction do
       book.reservations.find_by(status: 'TAKEN').update_attributes(status: 'RETURNED')
-      next_in_queue.update_attributes(status: 'AVAILABLE') if next_in_queue.present?
+      book.next_in_queue.update_attributes(status: 'AVAILABLE') if book.next_in_queue.present?
     end
   end
 
-  def next_in_queue
-    book.reservations.where(status: 'RESERVED').order(created_at: :asc).first
-  end
-
   private
+
   attr_reader :book, :user
 end

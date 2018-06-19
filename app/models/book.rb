@@ -33,6 +33,10 @@ class Book < ApplicationRecord
     reservations.find_by(status: 'AVAILABLE')
   end
 
+  def next_in_queue
+    reservations.where(status: 'RESERVED').order(created_at: :asc).first
+  end
+
   private
 
   def available_for_user?(user)

@@ -34,8 +34,19 @@ RSpec.describe ReservationsHandler, type: :service do
 
   describe '#take' do
 
+    before {
+      allow(book).to receive(:can_take?).with(user).and_return(can_be_taken)
+    }
+
     context 'book cannot be taken' do
-      
+      let(:can_be_taken) { false }
+      it {
+        expect(subject.take).to eq("Book cannot be taken")
+      }
+    end
+
+    context 'book can be taken' do
+
     end
   end
 end
