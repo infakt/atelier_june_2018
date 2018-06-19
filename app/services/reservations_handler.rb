@@ -21,6 +21,7 @@ class ReservationsHandler
     else
       book.reservations.create(user: user, status: 'TAKEN')
     end
+    
   end
 
   def give_back
