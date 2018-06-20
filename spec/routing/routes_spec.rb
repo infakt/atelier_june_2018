@@ -34,10 +34,33 @@ describe 'AppRouting' do
   }
 
   it {
-    expect(get: 'books/new').to route_to(controller: 'books', action: 'index')
+    expect(get: 'books/new').to route_to(controller: 'books', action: 'new')
   }
 
   it {
-    expect(post: 'books/new').to route_to(controller: 'books', action: 'new')
+    expect(get: 'books').to route_to(controller: 'books', action: 'index')
   }
+
+  it {
+    expect(post: 'books').to route_to(controller: 'books', action: 'create')
+  }
+
+  it {
+    expect(get: 'books/12').to route_to(controller: 'books', action: 'show', id: '12')
+  }
+
+  it {
+    expect(put: 'books/12').to route_to(controller: 'books', action: 'update', id: '12')
+  }
+
+  it {
+    expect(patch: 'books/12').to route_to(controller: 'books', action: 'update', id: '12')
+  }
+
+  it {
+    expect(delete: 'books/12').to route_to(controller: 'books', action: 'destroy', id: '12')
+  }
+
+
+
 end
