@@ -296,3 +296,15 @@ table {
     margin-bottom: 0;
   }
 }
+
+.search-form {
+  align-items: center;
+  display: flex;
+  .btn {
+    margin: 0;
+    white-space: nowrap;
+  }
+  input {
+    margin-right: 20px;
+  }
+}
