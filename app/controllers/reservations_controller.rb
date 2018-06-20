@@ -8,17 +8,17 @@ class ReservationsController < ApplicationController
 
 
   def take
-    reservation_handler.reserve if book.can_take?(current_user)
+    reservation_handler.take
     redirect_to(book_path(book.id))
   end
 
   def give_back
-    book.give_back if book.can_give_back?(current_user)
+    reservation_handler.give_back
     redirect_to(book_path(book.id))
   end
 
   def cancel
-    reservation_handler
+    reservation_handler.cancel_reservation
     redirect_to(book_path(book.id))
   end
 
