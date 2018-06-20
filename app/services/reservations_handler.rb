@@ -15,7 +15,7 @@ def cancel_reservation
   book.reservations.where(user: user, status: 'RESERVED').order(created_at: :asc).first.update_attributes(status: 'CANCELED')
 end
 
-def take(book)
+def take
   return "Book cannot be taken" unless book.can_take?(user)
 
   if book.available_reservation.present?
