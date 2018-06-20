@@ -26,6 +26,10 @@ class BooksController < ApplicationController
   def destroy
   end
 
+  def by_category
+    @category = ::Category.find_by(name: params[:name])
+  end
+
   private
 
   def load_books
@@ -37,6 +41,6 @@ class BooksController < ApplicationController
   end
 
   def new_book
-    @book = Book.new(title: params[:title], isbn: params[:isbn], category_name: params[:category_name])
+    @book = Book.new(title: params[:title], isbn: params[:isbn], category_id: params[:category])
   end
 end
