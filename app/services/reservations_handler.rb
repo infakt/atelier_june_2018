@@ -32,11 +32,10 @@ def give_back(book)
   end
 end
 
-def next_in_queue
-  book.reservations.where(status: 'RESERVED').order(created_at: :asc).first
-end
+
 
 private
+
 attr_reader :book, :user
 
 
