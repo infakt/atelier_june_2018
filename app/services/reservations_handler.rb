@@ -16,9 +16,10 @@ class ReservationsHandler
   def take
     return "Book can not be taken at the moment" unless book.can_take?(user)
     if book.available_reservation.present?
+      send_mailers(book.available_reservation)
       book.available_reservation.update_attributes(status: 'TAKEN')
     else
-      book.reservations.create(user: user, status: 'TAKEN')
+      send_mailers(book.reservations.create(user: user, status: 'TAKEN'))
     end
   end
 
@@ -32,4 +33,9 @@ class ReservationsHandler
   private
   attr_reader :user, :book
 
+  def send_mailers(res)
+    remind_date = res.expires_at - 1.day
+    ::ReservationsMailer.delay(run_at: remind_date).book_return_remind(res.book)
+    ::ReservationsMailer.delay(run_at: remind_date).book_reserved_return(res.book)
+  end
 end

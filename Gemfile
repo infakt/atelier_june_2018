@@ -17,6 +17,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'httparty'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -25,6 +27,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_girl_rails'
   gem 'faker', git: 'git://github.com/stympy/faker.git', branch: 'master'
+  gem "letter_opener"
 end
 
 group :development do

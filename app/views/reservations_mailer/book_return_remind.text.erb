@@ -1,0 +1,3 @@
+Hej <%= @borrower.email %>
+<%= @reservation.expires_at %> upływa termin oddania książki pt. <%= @book.title %>. Prosimy - zwróć książkę w terminie!
+<%= link_to "Przejdź do książki", book_url(@book.id, host: "localhost:3000") %>
