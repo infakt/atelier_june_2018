@@ -272,7 +272,7 @@ def take(user)
   end
 end
 ...
-```ruby
+```
 * mamy tutaj dwa przypadki - pierwszy **kiedy jest jakaś rezerwacja dostępna** - `available_reservation.present?`
   * w takiej sytuacji **mamy dostęp do obiektu rezerwacji** - `available_reservation`
   * z rezerwacji - możemy wyciągnąć **książkę** oraz jej **_deadline_**
