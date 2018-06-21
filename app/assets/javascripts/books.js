@@ -20,3 +20,23 @@ $(document).ready(function() {
     e.preventDefault();
   });
 });
+
+$(document).ready(function(){
+  $('.x-autocomplete').each(function(i, obj) {
+    $(obj).easyAutocomplete({
+      url: '/api/v1/books/lookup',
+      getValue: obj.id,
+      list: {
+        match: {
+          enabled: true
+        },
+        onChooseEvent: function() {
+          $('.x-autocomplete').each(function(i, obj) {
+            var selectedData = $(obj).getSelectedItemData();
+            if (selectedData === -1) { $(obj).val(''); }
+          })
+        }
+      }
+    });
+  });
+})

@@ -1,0 +1,10 @@
+<%= form_tag filter_path, class: 'search-form', method: :get, remote: true, format: :js do %>
+  <%= text_field_tag :isbn, '', placeholder: 'ISBN', class: 'x-autocomplete' %>
+  <%= text_field_tag :title, '', placeholder: 'title', class: 'x-autocomplete' %>
+  <%= text_field_tag :category_name, '', placeholder: 'category', class: 'x-autocomplete' %>
+  <%= button_tag type: 'submit', class: 'btn' do %>
+    <i class="fa fa-search"></i>
+    lookup
+  <% end %>
+<% end %>
+<br>
