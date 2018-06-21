@@ -11,7 +11,7 @@
     </div>
 
     <div class="field x-category-name">
-      <%= text_field_tag 'category_name', '', placeholder: 'category' %>
+      <%= select_tag "category", options_from_collection_for_select(Category.all, "id", "name") %>
     </div>
 
     <div class="field x-page-count">
