@@ -1,0 +1,5 @@
+<h2>Hej <%= @reserver.email %></h2>
+<p>
+  <%= @reservation.expires_at %> upływa termin oddania książki pt. <%= @book.title %>, którą zarezerwowałeś w systemie. Już niedługo możesz ją odebrać!<br>
+  <%= link_to "Przejdź do książki", book_url(@book.id, host: "localhost:3000") %>
+</p>
