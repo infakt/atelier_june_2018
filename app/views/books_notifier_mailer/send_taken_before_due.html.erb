@@ -1,0 +1,8 @@
+
+Your taken  <%= link_to 'book', book_url(@book.id, host: "localhost:3000") %> should be given back till tomorrow.
+
+<h4>Book data: </h4>
+
+Title: <%= @book.title %>
+<br>
+ISBN: <%= @book.isbn %>

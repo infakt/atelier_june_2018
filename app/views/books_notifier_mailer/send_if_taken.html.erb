@@ -1,0 +1,10 @@
+Hi, <%= @user.email %>! <br> <br>
+You've taken a  <%= link_to 'book', book_url(@book.id, host: "localhost:3000") %>.
+
+You shall give it back till <%= @book.reservations.last.expires_in %>.
+
+<h4>Book data: </h4>
+
+Title: <%= @book.title %>
+<br>
+ISBN: <%= @book.isbn %>

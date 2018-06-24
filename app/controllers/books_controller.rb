@@ -21,6 +21,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @reservation_handler ||= ::ReservationsHandler.new(current_user, @book)
   end
 
   def destroy
