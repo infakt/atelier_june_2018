@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'devise'
-
+gem 'sidekiq'
 gem 'rails', '~> 5.1.2'
 gem 'pg'
 gem 'sqlite3'
@@ -24,6 +24,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_girl_rails'
+  gem 'pry'
   gem 'faker', git: 'git://github.com/stympy/faker.git', branch: 'master'
 end
 
