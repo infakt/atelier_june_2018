@@ -6,6 +6,18 @@ GIT
     faker (1.8.7)
       i18n (>= 0.7)
 
+GIT
+  remote: https://github.com/sinatra/sinatra.git
+  revision: 47a990d9a86cd42e3a18a8145ccacd7567ace66f
+  specs:
+    rack-protection (2.0.3)
+      rack
+    sinatra (2.0.3)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.3)
+      tilt (~> 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -117,6 +129,7 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     multi_xml (0.6.0)
+    mustermann (1.0.2)
     nio4r (2.3.1)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -244,10 +257,12 @@ DEPENDENCIES
   pg
   pry
   puma (~> 3.7)
+  rack-protection
   rails (~> 5.1.2)
   rspec-rails (~> 3.6)
   sass-rails (~> 5.0)
   selenium-webdriver
+  sinatra!
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

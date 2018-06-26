@@ -7,7 +7,8 @@ end
 
 gem 'devise'
 
-
+gem 'sinatra', github: 'sinatra/sinatra', require: false
+gem 'rack-protection'
 gem 'rails', '~> 5.1.2'
 gem 'pg'
 gem 'sqlite3'
