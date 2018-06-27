@@ -7,7 +7,7 @@ namespace :reservation do
     end
   end
 
-  dec "send notification emails"
+  desc "send notification emails"
   task send_notification: :environment do
     reservations = Reservation.where(status: 'TAKEN').where('DATE(expires_at) = ?', Date.tomorrow)
     reservations.each do |res|
