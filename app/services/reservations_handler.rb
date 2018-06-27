@@ -22,13 +22,18 @@ class ReservationsHandler
     else
       reservation = book.reservations.create(user: user, status: 'TAKEN')
       perform_expiration_worker(reservation)
-    end
+    end.tap { |reserv|
+      notify_user_calendar(reserv)
+    }
     ReservationMailer.reservation_confirmation(user, book).deliver_now
   end
 
   def give_back
     ActiveRecord::Base.transaction do
-      book.reservations.find_by(status: 'TAKEN').update_attributes(status: 'RETURNED')
+      book.reservations.find_by(status: 'TAKEN').tap { |reserv|
+        reserv.update_attributes(status: 'RETURNED')
+        notify_user_calendar(reserv)
+      }
       book.next_in_queue.update_attributes(status: 'AVAILABLE') if book.next_in_queue.present?
     end
   end

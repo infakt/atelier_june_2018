@@ -39,6 +39,10 @@ class Book < ApplicationRecord
 
   private
 
+  def notify_user_calendar(reservation)
+    UserCalendarNotifier.new(reservation.user).perform(reservation)
+  end
+
   def available_for_user?(user)
     if available_reservation.present?
       available_reservation.user == user
