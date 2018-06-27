@@ -24,5 +24,13 @@
     </div>
   <% end %>
 
+  <%= link_to user_google_oauth2_omniauth_authorize_path do
+    image_tag('btn_google_signin_dark_normal_web.png',
+      onmouseover: "this.src='#{asset_path('btn_google_signin_dark_focus_web.png')}'",
+      onmouseout: "this.src='#{asset_path('btn_google_signin_dark_normal_web.png')}'",
+      onclick: "this.src='#{asset_path('btn_google_signin_dark_pressed_web.png')}'"
+      )
+  end %><br />
+
   <%= render "devise/shared/links" %>
 </div>
