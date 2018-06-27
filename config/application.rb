@@ -14,5 +14,7 @@ module Atelier
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    A9n.root = File.expand_path('../..', __FILE__)
+    A9n.load
   end
 end

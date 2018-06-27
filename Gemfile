@@ -17,6 +17,10 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'httparty'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'omniauth-google-oauth2'
+#gem 'google-api-client', '0.23.0'
+gem 'google-api-client', '0.8.2', require: 'google/api_client'
+gem 'a9n'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

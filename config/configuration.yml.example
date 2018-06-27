@@ -1,0 +1,5 @@
+defaults:
+  google_client_id: 'No credentials'
+  google_client_secret: 'in this repo :)'
+  default_calendar: { summary: 'atelier' }
+  app_host: 'http://localhost:3000'
