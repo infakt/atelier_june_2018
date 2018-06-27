@@ -24,7 +24,9 @@ class Book < ApplicationRecord
       available_reservation.update_attributes(status: 'TAKEN')
     else
       reservations.create(user: user, status: 'TAKEN')
-    end
+    end.tap {|reservation|
+      notify_user_calendar(reservation)
+    }
   end
 
   def can_give_back?(user)
@@ -33,7 +35,10 @@ class Book < ApplicationRecord
 
   def give_back
     ActiveRecord::Base.transaction do
-      reservations.find_by(status: 'TAKEN').update_attributes(status: 'RETURNED')
+      reservations.find_by(status: 'TAKEN').tap { |reservation|
+        reservation.update_attributes(status: 'RETURNED')
+        notify_user_calendar(reservation)
+      }
       next_in_queue.update_attributes(status: 'AVAILABLE') if next_in_queue.present?
     end
   end
@@ -49,10 +54,16 @@ class Book < ApplicationRecord
   end
 
   def cancel_reservation(user)
-    reservations.where(user: user, status: 'RESERVED').order(created_at: :asc).first.update_attributes(status: 'CANCELED')
+    reservations.where(user: user, status: 'RESERVED').order(created_at: :asc).first.update_attributes(status: 'CANCELED').tap {|reservation|
+      notify_user_calendar(reservation)
+    }
   end
 
   private
+
+  def notify_user_calendar(reservation)
+    UserCalendarNotifier.new(reservation.user).perform(reservation)
+  end
 
   def not_taken?
     reservations.find_by(status: 'TAKEN').nil?
