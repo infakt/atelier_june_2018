@@ -1,0 +1,15 @@
+<h3>Hello <%= @user.email %>!</h3>
+
+<p>You have reserved  <%= link_to @book.title, book_url(@book.id, host: "localhost:3000") %>.</p>
+
+<p>Reserved book details:</p>
+<ul>
+  <li>title: <%= @book.title %></li>
+  <li>ISBN: <%= @book.isbn ? @book.isbn : '-' %></li>
+  <li>published at: <%= @book.year ? @book.year : '-' %></li>
+  <li>page count: <%= @book.page_count ? @book.page_count : '-' %></li>
+</ul>
+
+<p>We'll let you know when it becomes available, hang tight 🙂.</p>
+
+<p>Best wishes,<br>Atelier crew</p>
