@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'devise'
-
+gem 'sidekiq'
 gem 'rails', '~> 5.1.2'
 gem 'pg'
 gem 'sqlite3'
@@ -17,6 +17,10 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'httparty'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'whenever', require: false
+gem 'a9n'
+gem 'omniauth-google-oauth2'
+gem 'google-api-client', '0.8.2', require: 'google/api_client'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -24,6 +28,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_girl_rails'
+  gem 'pry'
   gem 'faker', git: 'git://github.com/stympy/faker.git', branch: 'master'
 end
 

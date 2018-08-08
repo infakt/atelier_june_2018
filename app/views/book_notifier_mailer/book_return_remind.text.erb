@@ -1,0 +1,9 @@
+Szalom!
+Szanowny <%= @user.email %>.
+Upływa termin (<%= @reservation.expires_at %>) oddania książki o tytule <%= @book.title %>
+ODDAJ KSIĄŻKE DO BIBLIOTEKI, LUDZIE NA NIĄ CZEKAJĄ!
+Zwróć ją w terminie bo moje ziomki Cię dojadą.
+<%= link_to @book.title, book_url(@book.id) %>
+
+z wyrazami szacunku,
+Twoja Bibliotekarka :*
