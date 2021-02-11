@@ -7,6 +7,8 @@ end
 
 gem 'devise'
 
+gem 'sinatra', github: 'sinatra/sinatra', require: false
+gem 'rack-protection'
 gem 'rails', '~> 5.1.2'
 gem 'pg'
 gem 'sqlite3'
@@ -22,6 +24,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'pry'
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_girl_rails'
   gem 'faker', git: 'git://github.com/stympy/faker.git', branch: 'master'
